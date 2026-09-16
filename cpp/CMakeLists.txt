@@ -19,7 +19,8 @@ set_target_properties(mujoco_sdk PROPERTIES
 
 add_executable(ai_runner
                src/main.cpp
-               src/environment.cpp)
+               src/environment.cpp
+               src/humanoid_environment.cpp)
 
 target_include_directories(ai_runner PRIVATE include)
 target_compile_definitions(ai_runner PRIVATE AI_RUNNER_ASSET_DIR="${CMAKE_CURRENT_SOURCE_DIR}/assets")
