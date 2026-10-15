@@ -6,15 +6,15 @@
 
 namespace ai_runner{
 
-std::array<float,2> Environment::reset(){
+std::array<float,2> Environment::reset(){ //Resets the environment to its 0 state
     position_ = 0.0F;
     velocity_ = 0.0F;
     step_count_ = 0;
 
-    return {position_, velocity_};
+    return {position_, velocity_};// returns the initial state of the environment with (position, velocity)
 }
 
-StepResult Environment::step(float action){
+StepResult Environment::step(float action){// takes a step in the environment based on the action provided and returns the result of that step
     constexpr float time_step = 0.02F;
     constexpr float max_action= 1.0F;
     constexpr float goal_position = 10.0F;

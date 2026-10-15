@@ -1,0 +1,10 @@
+#Python env
+.venv/
+
+#Cmake builds
+build/
+out/
+
+#VS files
+.vs/
+.vscode/

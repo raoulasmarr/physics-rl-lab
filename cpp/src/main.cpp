@@ -3,6 +3,7 @@
 #include <exception>
 #include <iostream>
 #include <string>
+#include <vector>
 
 int main() {
     try {
@@ -13,20 +14,19 @@ int main() {
 
         const auto initial_observation = environment.reset();
 
-        std::cout << "Observation size: "
-                  << environment.observation_size() << '\n';
+        const std::vector<float> action(environment.action_size(), 0.0F);
+        const auto step_result = environment.step(action);
 
-        std::cout << "Action size: "
-                  << environment.action_size() << '\n';
+        std::cout << "Reward after one zero-action step: "
+          << step_result.reward << '\n';
 
-        std::cout << "First observation value: "
-                  << initial_observation[0] << '\n';
+        std::cout << "Episode ended: "
+          << step_result.terminated << '\n';
 
-        return 0;
-    } catch (const std::exception& error) {
-        std::cerr << "Environment setup failed:\n"
-                  << error.what() << '\n';
-
+        return 1;
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << '\n';
         return 1;
     }
 }
